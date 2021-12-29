@@ -1,0 +1,11 @@
+d:\Code\Games\Godot\Heist-Rusters\rust\target\debug\deps\xmlparser-af8f35f9e7652460.rmeta: C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\lib.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\error.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\stream.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\strspan.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\xmlchar.rs
+
+d:\Code\Games\Godot\Heist-Rusters\rust\target\debug\deps\libxmlparser-af8f35f9e7652460.rlib: C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\lib.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\error.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\stream.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\strspan.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\xmlchar.rs
+
+d:\Code\Games\Godot\Heist-Rusters\rust\target\debug\deps\xmlparser-af8f35f9e7652460.d: C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\lib.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\error.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\stream.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\strspan.rs C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\xmlchar.rs
+
+C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\lib.rs:
+C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\error.rs:
+C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\stream.rs:
+C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\strspan.rs:
+C:\Users\Alex\ Vergara\.cargo\registry\src\github.com-1ecc6299db9ec823\xmlparser-0.13.3\src\xmlchar.rs:

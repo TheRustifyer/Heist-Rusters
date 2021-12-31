@@ -181,6 +181,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "gdrusthelper"
+version = "0.1.0"
+source = "git+https://github.com/Pyzyryab/gdrust-helper#af837475dfe7670d8cb83eb448ad99dae8b5e134"
+dependencies = [
+ "gdnative",
+]
+
+[[package]]
 name = "getrandom"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -217,6 +225,7 @@ name = "heist-rusters"
 version = "0.1.0"
 dependencies = [
  "gdnative",
+ "gdrusthelper",
 ]
 
 [[package]]
@@ -477,9 +486,9 @@ checksum = "f14ee04d9415b52b3aeab06258a3f07093182b88ba0f9b8d203f211a7a7d41c7"
 
 [[package]]
 name = "version_check"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5fecdca9a5291cc2b8dcf7dc02453fee791a280f3743cb0905f8822ae463b3fe"
+checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
 
 [[package]]
 name = "wasi"

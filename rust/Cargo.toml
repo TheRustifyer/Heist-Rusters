@@ -8,3 +8,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 gdnative = "0.9.3"
+gdrusthelper = { git = "https://github.com/Pyzyryab/gdrust-helper" }

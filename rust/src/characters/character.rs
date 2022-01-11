@@ -1,15 +1,29 @@
 use gdnative::prelude::*;
 use gdrusthelper as gdrust;
 
+use crate::utils::game_constants::in_game_constant::{
+    MOVE_SPEED
+};
+
 #[derive(NativeClass)]
 #[inherit(KinematicBody2D)]
 #[derive(Debug)]
-pub struct Character;
+pub struct Character {
+    // Binding to the Input singleton
+    input: Option<&'static Input>,
+    // Tracks the movement of the player
+    motion: Vector2
+}
 
 #[gdnative::methods]
 impl Character {
     pub fn new(_owner: &KinematicBody2D) -> Self { 
-        Self { }
+        Self { 
+            // Input 
+            input: Some(Input::godot_singleton()),
+            // Player motion
+            motion: Vector2::zero()
+        }
     }
 
     #[export]
@@ -29,5 +43,24 @@ impl Character {
         for child in owner.get_children().into_iter() {
             godot_print!("Node: {:?}", &child);
         }
+    }
+
+    #[export]
+    fn _physics_process(&self, owner: &KinematicBody2D, delta: f32) {
+        
+    }
+
+    fn move_character(&self) {
+        if Input::is_action_pressed(self.input.unwrap(), "move_up") 
+            && !Input::is_action_pressed(self.input.unwrap(), "move_down")  {
+            self.motion.y -= MOVE_SPEED;
+        }
+        if Input::is_action_pressed(self.input.unwrap(), "move_down") 
+            && !Input::is_action_pressed(self.input.unwrap(), "move_up")  {
+            self.motion.y += MOVE_SPEED;
+        }
+
+            
+
     }
 }

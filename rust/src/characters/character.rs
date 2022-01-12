@@ -38,7 +38,7 @@ impl Character {
             "sprite_child","assets/GFX/PNG/Man Red/manRed_stand.png"
         );
         owner.add_child(sprite, true);
-        owner.set_position(Vector2::new(200.0, 200.0));
+        owner.set_position(Vector2::new(300.0, 200.0));
         
         for child in owner.get_children().into_iter() {
             godot_print!("Node: {:?}", &child);
@@ -46,21 +46,38 @@ impl Character {
     }
 
     #[export]
-    fn _physics_process(&self, owner: &KinematicBody2D, delta: f32) {
-        
+    fn _physics_process(&mut self, owner: &KinematicBody2D, delta: f32) {
+        self.move_character();
+        owner.move_and_slide(self.motion, Vector2::zero(), true, 0 as i64, 0.0 as f64, true);
     }
 
-    fn move_character(&self) {
+    fn move_character(&mut self) {
         if Input::is_action_pressed(self.input.unwrap(), "move_up") 
             && !Input::is_action_pressed(self.input.unwrap(), "move_down")  {
             self.motion.y -= MOVE_SPEED;
+            godot_print!("UP");
         }
-        if Input::is_action_pressed(self.input.unwrap(), "move_down") 
+        else if Input::is_action_pressed(self.input.unwrap(), "move_down") 
             && !Input::is_action_pressed(self.input.unwrap(), "move_up")  {
             self.motion.y += MOVE_SPEED;
+            godot_print!("DOWN");
+        }
+        else {
+            self.motion.y = 0.0;
         }
 
-            
-
+        if Input::is_action_pressed(self.input.unwrap(), "move_left") 
+            & !Input::is_action_pressed(self.input.unwrap(), "move_right")  {
+        self.motion.x -= MOVE_SPEED;
+        godot_print!("LEFT");
+        }
+        else if Input::is_action_pressed(self.input.unwrap(), "move_right") 
+            && !Input::is_action_pressed(self.input.unwrap(), "move_left")  {
+            self.motion.x += MOVE_SPEED;
+            godot_print!("RIGHT");
+        }
+        else {
+            self.motion.x = 0.0;
+        }
     }
 }

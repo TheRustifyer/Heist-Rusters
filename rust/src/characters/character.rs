@@ -46,6 +46,7 @@ impl Character {
         );
         sprite.set_visible(true);
         owner.add_child(sprite, true);
+        // Setting the player's starting point on the map
         owner.set_position(Vector2::new(300.0, 200.0));
         
         for child in owner.get_children().into_iter() {

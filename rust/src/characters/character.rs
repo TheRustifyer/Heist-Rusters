@@ -1,10 +1,11 @@
 use gdnative::prelude::*;
 use gdrusthelper as gdrust;
 
-use crate::characters::motion::Motion2DWithMouse;
+use gdrust::gdmotion::KeysMotionMouseDirection;
 
-use crate::utils::game_constants::in_game_constant::{
-    CHARACTER_CONFIGURATION
+use crate::utils::constants::in_game_constant::{
+    CHARACTER_CONFIGURATION,
+    MOTION_KEYBINDINGS
 };
 
 #[derive(NativeClass)]
@@ -12,24 +13,21 @@ use crate::utils::game_constants::in_game_constant::{
 #[derive(Debug)]
 pub struct Character {
     // Binding to the Input singleton
-    input: Option<&'static Input>,
+    input: &'static Input,
     // Tracks the movement of the player
     motion: Vector2
 }
 
-/// Implements the `Motion2DWithMouse` trait that already provides an implementation
-/// for move the character with the keyboard define ones and aiming the facing direction
-/// with the mouse
-impl Motion2DWithMouse for Character { }
+impl KeysMotionMouseDirection for Character { }
 
 #[gdnative::methods]
 impl Character {
     pub fn new(_owner: &KinematicBody2D) -> Self { 
         Self { 
             // Input 
-            input: Some(Input::godot_singleton()),
+            input: Input::godot_singleton(),
             // Player motion
-            motion: Vector2::zero()
+            motion: Vector2::new(0.0, 0.0)
         }
     }
 
@@ -49,6 +47,7 @@ impl Character {
         // Setting the player's starting point on the map
         owner.set_position(Vector2::new(300.0, 200.0));
         
+        // Just for debug the child nodes
         for child in owner.get_children().into_iter() {
             godot_print!("Node: {:?}", &child);
         }
@@ -56,10 +55,20 @@ impl Character {
 
     #[export]
     fn _physics_process(&mut self, owner: &KinematicBody2D, _delta: f32) {
-        let mut motion = self.motion;
-        self.move_character(owner, self.input, &mut motion, CHARACTER_CONFIGURATION);
-        self.motion = motion;
-        owner.move_and_slide(self.motion, Vector2::zero(), false, 4 as i64, 0.785398 as f64, true);
+        self.move_character(
+            self.input, 
+            &mut self.motion, 
+            CHARACTER_CONFIGURATION,
+            MOTION_KEYBINDINGS
+        );
+        owner.move_and_slide(
+            self.motion, 
+            Vector2::new(0.0, 0.0), 
+            false, 
+            4 as i64, 
+            0.785398 as f64, 
+            true
+        );
     }
 
 }

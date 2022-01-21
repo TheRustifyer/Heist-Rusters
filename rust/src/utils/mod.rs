@@ -1,1 +1,1 @@
-pub mod game_constants;
+pub mod constants;

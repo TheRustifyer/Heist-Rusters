@@ -1,8 +1,10 @@
 use gdnative::prelude::*;
 use gdrusthelper as gdrust;
 
+use crate::characters::motion::Motion2DWithMouse;
+
 use crate::utils::game_constants::in_game_constant::{
-    MOVE_SPEED
+    CHARACTER_CONFIGURATION
 };
 
 #[derive(NativeClass)]
@@ -14,6 +16,11 @@ pub struct Character {
     // Tracks the movement of the player
     motion: Vector2
 }
+
+/// Implements the `Motion2DWithMouse` trait that already provides an implementation
+/// for move the character with the keyboard define ones and aiming the facing direction
+/// with the mouse
+impl Motion2DWithMouse for Character { }
 
 #[gdnative::methods]
 impl Character {
@@ -48,33 +55,10 @@ impl Character {
 
     #[export]
     fn _physics_process(&mut self, owner: &KinematicBody2D, _delta: f32) {
-        self.move_character(owner);
+        let mut motion = self.motion;
+        self.move_character(owner, self.input, &mut motion, CHARACTER_CONFIGURATION);
+        self.motion = motion;
         owner.move_and_slide(self.motion, Vector2::zero(), false, 4 as i64, 0.785398 as f64, true);
     }
 
-    fn move_character(&mut self, owner: &KinematicBody2D) {
-        if Input::is_action_pressed(self.input.unwrap(), "move_up") 
-            && !Input::is_action_pressed(self.input.unwrap(), "move_down")  {
-            self.motion.y -= MOVE_SPEED;
-        }
-        else if Input::is_action_pressed(self.input.unwrap(), "move_down") 
-            && !Input::is_action_pressed(self.input.unwrap(), "move_up")  {
-            self.motion.y += MOVE_SPEED;
-        }
-        else {
-            self.motion.y = 0.0;
-        }
-
-        if Input::is_action_pressed(self.input.unwrap(), "move_left") 
-            & !Input::is_action_pressed(self.input.unwrap(), "move_right")  {
-        self.motion.x -= MOVE_SPEED;
-        }
-        else if Input::is_action_pressed(self.input.unwrap(), "move_right") 
-            && !Input::is_action_pressed(self.input.unwrap(), "move_left")  {
-            self.motion.x += MOVE_SPEED;
-        }
-        else {
-            self.motion.x = 0.0;
-        }
-    }
 }

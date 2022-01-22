@@ -186,7 +186,7 @@ dependencies = [
 [[package]]
 name = "gdrusthelper"
 version = "0.3.0"
-source = "git+https://github.com/Pyzyryab/gdrust-helper#34c1c5acc3605392cda13f3aef5f0a0861da565f"
+source = "git+https://github.com/Pyzyryab/gdrust-helper#d7468823903c32a7d4eee538ef2ca5e77c603185"
 dependencies = [
  "gdnative",
 ]
@@ -304,9 +304,9 @@ checksum = "308cc39be01b73d0d18f82a0e7b2a3df85245f84af96fdddc5d202d27e47b86a"
 
 [[package]]
 name = "mini-internal"
-version = "0.1.18"
+version = "0.1.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4cff801412f35cc16309997f9709a7933a3229df170fa9b3a9cae12e95eef0b5"
+checksum = "dccb594434c2df761a08292e1b0b0297f3f913397d91f61ca560cc711879c467"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -321,9 +321,9 @@ checksum = "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
 
 [[package]]
 name = "miniserde"
-version = "0.1.18"
+version = "0.1.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c57dcbb3bace5647e7254cae926a5251bd6243c9e25b70514199f39f7df118b"
+checksum = "217dd1e60175b52163bbf51e3eed983aab5a9ce134f53e1a2a3308896db803b5"
 dependencies = [
  "itoa",
  "mini-internal",
@@ -398,9 +398,9 @@ dependencies = [
 
 [[package]]
 name = "quote"
-version = "1.0.14"
+version = "1.0.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "47aa80447ce4daf1717500037052af176af5d38cc3e571d9ec1c7353fc10c87d"
+checksum = "864d3e96a899863136fc6e99f3d7cae289dafe43bf2c5ac19b70df7210c0a145"
 dependencies = [
  "proc-macro2",
 ]

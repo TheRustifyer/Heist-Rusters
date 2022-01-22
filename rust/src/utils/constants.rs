@@ -4,19 +4,19 @@ pub mod in_game_constant {
         gdkeybinder::MotionKeybindings
     };
 
-    pub const MOVE_SPEED: f32 = 10.0;
-    pub const MAX_SPEED: f32 = 50.0;
+    const MOVE_SPEED: f32 = 100.0;
+    const MAX_SPEED: f32 = 500.0;
 
-    pub const UP: &'static str = "move_up";
-    pub const DOWN: &'static str = "move_down";
-    pub const LEFT: &'static str = "move_left";
-    pub const RIGHT: &'static str = "move_right";
+    const UP: &'static str = "move_up";
+    const DOWN: &'static str = "move_down";
+    const LEFT: &'static str = "move_left";
+    const RIGHT: &'static str = "move_right";
 
     pub const MOTION_KEYBINDINGS: MotionKeybindings = 
         MotionKeybindings {
-            up: UP,
-            down: DOWN,
-            left: LEFT,
+            up: UP, 
+            down: DOWN, 
+            left: LEFT, 
             right: RIGHT
         };
 

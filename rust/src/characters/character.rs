@@ -11,24 +11,14 @@ use crate::utils::constants::in_game_constant::{
 #[derive(NativeClass)]
 #[inherit(KinematicBody2D)]
 #[derive(Debug)]
-pub struct Character {
-    // Binding to the Input singleton
-    input: &'static Input,
-    // Tracks the movement of the player
-    motion: Vector2
-}
+pub struct Character { }
 
 impl KeysMotionMouseDirection for Character { }
 
-#[gdnative::methods]
+#[gdnative::prelude::methods]
 impl Character {
     pub fn new(_owner: &KinematicBody2D) -> Self { 
-        Self { 
-            // Input 
-            input: Input::godot_singleton(),
-            // Player motion
-            motion: Vector2::new(0.0, 0.0)
-        }
+        Self { }
     }
 
     #[export]
@@ -54,15 +44,13 @@ impl Character {
     }
 
     #[export]
-    fn _physics_process(&mut self, owner: &KinematicBody2D, _delta: f32) {
-        self.move_character(
-            self.input, 
-            &mut self.motion, 
+    fn _physics_process(&self, owner: &KinematicBody2D, _delta: f32) {
+        let motion: Vector2 = self.move_character(
             CHARACTER_CONFIGURATION,
             MOTION_KEYBINDINGS
         );
         owner.move_and_slide(
-            self.motion, 
+            motion, 
             Vector2::new(0.0, 0.0), 
             false, 
             4 as i64, 

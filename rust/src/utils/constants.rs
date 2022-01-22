@@ -4,8 +4,8 @@ pub mod in_game_constant {
         gdkeybinder::MotionKeybindings
     };
 
-    const MOVE_SPEED: f32 = 100.0;
-    const MAX_SPEED: f32 = 500.0;
+    const MOVE_SPEED: f32 = 500.0;
+    const MAX_SPEED: f32 = 1000.0;
 
     const UP: &'static str = "move_up";
     const DOWN: &'static str = "move_down";

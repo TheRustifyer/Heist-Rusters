@@ -186,7 +186,7 @@ dependencies = [
 [[package]]
 name = "gdrusthelper"
 version = "0.3.0"
-source = "git+https://github.com/Pyzyryab/gdrust-helper#d7468823903c32a7d4eee538ef2ca5e77c603185"
+source = "git+https://github.com/Pyzyryab/gdrust-helper#6b455bc30371c7e10c98583ed98ac8926c7aade7"
 dependencies = [
  "gdnative",
 ]

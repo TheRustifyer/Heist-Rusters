@@ -11,14 +11,19 @@ use crate::utils::constants::in_game_constant::{
 #[derive(NativeClass)]
 #[inherit(KinematicBody2D)]
 #[derive(Debug)]
-pub struct Character { }
+pub struct Character { 
+    // Tracks the movement of the player
+    motion: Vector2
+}
 
 impl KeysMotionMouseDirection for Character { }
 
 #[gdnative::prelude::methods]
 impl Character {
     pub fn new(_owner: &KinematicBody2D) -> Self { 
-        Self { }
+        Self { 
+            motion: Vector2::ZERO
+        }
     }
 
     #[export]
@@ -46,6 +51,8 @@ impl Character {
     #[export]
     fn _physics_process(&self, owner: &KinematicBody2D, _delta: f32) {
         let motion: Vector2 = self.move_character(
+            owner,
+            self.motion,
             CHARACTER_CONFIGURATION,
             MOTION_KEYBINDINGS
         );

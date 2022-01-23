@@ -1,3 +1,4 @@
 target/
 godot/import/
 .import/
+*.import

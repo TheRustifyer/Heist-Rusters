@@ -24,7 +24,7 @@ pub mod in_game_constant {
         CharacterConfiguration {
             move_speed: MOVE_SPEED,
             max_speed: MAX_SPEED,
-            friction: 0.0
+            friction: 0.9
         };
 }
 

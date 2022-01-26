@@ -1,13 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/character.gdns" type="Script" id=1]
+[ext_resource path="res://assets/GFX/PNG/Man Red/manRed_stand.png" type="Texture" id=2]
+[ext_resource path="res://assets/Lightmaps/torchmap.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
 height = 24.0
 
-[node name="Node2D" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 104, 52 )
 script = ExtResource( 1 )
 
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
+
+[node name="Torch" type="Light2D" parent="."]
+position = Vector2( 326, 1 )
+scale = Vector2( 0.965625, 1 )
+texture = ExtResource( 3 )
+shadow_enabled = true
+shadow_color = Color( 0.203922, 0.196078, 0.196078, 0 )

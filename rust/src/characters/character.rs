@@ -1,4 +1,4 @@
-use gdnative::prelude::*;
+use gdnative::{prelude::*, api::Light2D};
 
 /// Using the library `https://github.com/Pyzyryab/gdrust-helper`
 /// that will allow me to reduce the cognitive complexity of some
@@ -16,7 +16,9 @@ use crate::utils::constants::in_game_constant::{
 #[derive(Debug)]
 pub struct Character { 
     // Tracks the movement of the player
-    motion: Vector2
+    motion: Vector2,
+    // The status (ON/OFF) of the player's lantern
+    lantern: Option<TRef<'static, Light2D>>
 }
 
 impl KeysMotionMouseDirection for Character { }
@@ -25,16 +27,20 @@ impl KeysMotionMouseDirection for Character { }
 impl Character {
     pub fn new(_owner: &KinematicBody2D) -> Self { 
         Self { 
-            motion: Vector2::ZERO
+            motion: Vector2::ZERO,
+            lantern: None
         }
     }
 
     #[export]
-    fn _ready(&self, owner: &KinematicBody2D) {
-        // Just for debug the child nodes
-        for child in owner.get_children().into_iter() {
-            godot_print!("Node: {:?}", &child);
-        }
+    fn _ready(&mut self, owner: &KinematicBody2D) {
+        // Recovering the node of the torch light
+        self.lantern = unsafe { owner
+            .get_child(2)
+            .unwrap()
+            .assume_safe()
+            .cast::<Light2D>()
+        };
     }
 
     #[export]
@@ -45,6 +51,18 @@ impl Character {
             CHARACTER_CONFIGURATION,
             MOTION_KEYBINDINGS
         );
+        // For the sake of simplicity, we will set here the action that will switch ON/OFF
+        // the player's torch. NOTE: `.get_child(idx: 2)` -> Two it's the current index of the node
+        // relative to the player's KinematicBody2D root node
+        if Input::is_action_just_pressed(
+            Input::godot_singleton(), "torch_toggle", false
+        ) { 
+            self.lantern.unwrap().set_enabled(
+                !self.lantern.unwrap().is_enabled()
+            );
+        }
+        
+        // Move the player with the updated inputted data
         owner.move_and_slide(
             motion, 
             Vector2::new(0.0, 0.0), 

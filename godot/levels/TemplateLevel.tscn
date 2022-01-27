@@ -15,3 +15,6 @@ position = Vector2( -342, 34 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.137255, 0.137255, 0.137255, 1 )

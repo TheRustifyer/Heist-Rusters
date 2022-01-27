@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/character.gdns" type="Script" id=1]
 [ext_resource path="res://assets/GFX/PNG/Man Red/manRed_stand.png" type="Texture" id=2]
 [ext_resource path="res://assets/Lightmaps/torchmap.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 9.0
-height = 24.0
+radius = 14.0
+height = 25.0
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -16, -4, -8, -20, 0, -20, 8, -20, 8, -12, 16, 4, 8, 20, -8, 20, -16, 12 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 104, 52 )
@@ -20,8 +23,12 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Torch" type="Light2D" parent="."]
-position = Vector2( 326, 1 )
+position = Vector2( 16, 0 )
 scale = Vector2( 0.965625, 1 )
 texture = ExtResource( 3 )
+offset = Vector2( 320, 0 )
 shadow_enabled = true
 shadow_color = Color( 0.203922, 0.196078, 0.196078, 0 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 2 )

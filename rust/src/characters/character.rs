@@ -1,15 +1,29 @@
 use gdnative::prelude::*;
 use gdrusthelper as gdrust;
 
+use gdrust::gdmotion::KeysMotionMouseDirection;
+
+use crate::utils::constants::in_game_constant::{
+    CHARACTER_CONFIGURATION,
+    MOTION_KEYBINDINGS
+};
+
 #[derive(NativeClass)]
 #[inherit(KinematicBody2D)]
 #[derive(Debug)]
-pub struct Character;
+pub struct Character { 
+    // Tracks the movement of the player
+    motion: Vector2
+}
 
-#[gdnative::methods]
+impl KeysMotionMouseDirection for Character { }
+
+#[gdnative::prelude::methods]
 impl Character {
     pub fn new(_owner: &KinematicBody2D) -> Self { 
-        Self { }
+        Self { 
+            motion: Vector2::ZERO
+        }
     }
 
     #[export]
@@ -23,11 +37,33 @@ impl Character {
         let sprite = gdrust::gdcreator::sprite_with_asset(
             "sprite_child","assets/GFX/PNG/Man Red/manRed_stand.png"
         );
+        sprite.set_visible(true);
         owner.add_child(sprite, true);
-        owner.set_position(Vector2::new(200.0, 200.0));
+        // Setting the player's starting point on the map
+        owner.set_position(Vector2::new(300.0, 200.0));
         
+        // Just for debug the child nodes
         for child in owner.get_children().into_iter() {
             godot_print!("Node: {:?}", &child);
         }
     }
+
+    #[export]
+    fn _physics_process(&self, owner: &KinematicBody2D, _delta: f32) {
+        let motion: Vector2 = self.move_character(
+            owner,
+            self.motion,
+            CHARACTER_CONFIGURATION,
+            MOTION_KEYBINDINGS
+        );
+        owner.move_and_slide(
+            motion, 
+            Vector2::new(0.0, 0.0), 
+            false, 
+            4 as i64, 
+            0.785398 as f64, 
+            true
+        );
+    }
+
 }

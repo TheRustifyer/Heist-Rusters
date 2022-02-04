@@ -2,6 +2,7 @@ use gdnative::prelude::*;
 
 // Game crates
 pub mod characters;
+mod utils;
 
 use characters::character::Character;
 

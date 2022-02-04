@@ -1,2 +1,5 @@
-Cargo.lock
 target/
+godot/import/
+.import/
+*.import
+cargo.lock
